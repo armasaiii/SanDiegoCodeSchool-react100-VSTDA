@@ -5,14 +5,14 @@ class ToDos extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        Tasks: 'Hello, how are you doing today?'
+        Tasks: []
       }
       this.handleClick = this.handleClick.bind(this)
     }
   
-    handleClick() {
+    handleClick(event) {
       console.log('NICE!!!')
-      this.setState ({Tasks: 'I am doing fine, Thank you.'})
+      this.setState ({Tasks: event.target.value})
     }
 
     render () {

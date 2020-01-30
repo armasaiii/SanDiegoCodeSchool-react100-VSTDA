@@ -13,7 +13,7 @@ import React from 'react'
         </div>
         <div className='container-input'>
         <div className='panel-body'> I need to</div>
-            <input className='textarea' type='text' />
+            <input className='textarea' type='text' onClick={props.onClick}/>
                 <br/>
                 <select className='priority'>
                     <option className='priority' value='priority'>Priority</option>
@@ -38,13 +38,14 @@ import React from 'react'
 
         <div className='container-todo'>
             <input type="checkbox" />
-                <p>{props.data.Tasks}</p>
+                <label>{props.data.Tasks}</label>
+                {/* <p>{props.data.Tasks}</p>
             <input type="checkbox" />
                 <p>{props.data.Tasks}</p>
             <input type="checkbox" />
                 <p>{props.data.Tasks}</p>
             <input type="checkbox" />
-                <p>{props.data.Tasks}</p>
+                <p>{props.data.Tasks}</p> */}
         </div>
     </div>
     </main>
