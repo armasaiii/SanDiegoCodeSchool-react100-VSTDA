@@ -5,21 +5,22 @@ class ToDos extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        ToDos: []
+        Tasks: 'Hello, how are you doing today?'
       }
       this.handleClick = this.handleClick.bind(this)
     }
   
     handleClick() {
       console.log('NICE!!!')
-      this.setState ({ToDos: 'I am doing fine, Thank you.'})
+      this.setState ({Tasks: 'I am doing fine, Thank you.'})
     }
 
     render () {
         return (
-            <div>
-                <ToDoList/>
-            </div>
+          <ToDoList
+          onClick={this.handleClick}
+          data={this.state}
+          />
         )
     }
 }
