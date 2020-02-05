@@ -1,28 +1,27 @@
-import React from 'react'
-import ToDoList from './ToDoList'
+import React from 'react';
 
-class ToDos extends React.Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        Tasks: []
-      }
-      this.handleClick = this.handleClick.bind(this)
-    }
-  
-    handleClick(event) {
-      console.log('NICE!!!')
-      this.setState ({Tasks: event.target.value})
-    }
+function ToDos(props) {
+    return(
+        <div>
+            <div className='welcome-section'>
+                <header className='panel-body1'>
+                    {/* <h1>{this.state.test}</h1> */}
+                    <h4 className='topper'>View ToDos</h4>
+                        <h5 className='topper-inst'>Welcome to a very simple to do App!</h5>
+                            <p className='topper-inst'>Get started now by adding a new ToDo on the list.</p>
+                </header>
+            </div>
 
-    render () {
-        return (
-          <ToDoList
-          onClick={this.handleClick}
-          data={this.state}
-          />
-        )
-    }
+            <div className='container-todo'>
+            <div className='container-todo'>
+                <label>TEST</label>
+            </div>
+            </div>
+        </div>
+
+    )
 }
+
+
 
 export default ToDos
