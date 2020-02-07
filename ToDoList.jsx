@@ -13,30 +13,27 @@ import React from 'react'
         </div>
         <div className='container-input'>
         <div className='panel-body'> I need to</div>
-            <form onSubmit={props.newItemSubmitHandler} className='todoInput'>
-                <input 
-                    className='textarea'
-                    type='text'
-                    onChange={props.handleItemInput}
-                    value={props.newTask}
-                    placeholder='Add an item'
-                    />
+        <form onSubmit={props.newItemSubmitHandler} className='todoInput'>
+            <textarea
+                className='input'
+                type='text'
+                onChange={props.handleItemInput}
+                value={props.newTask}
+                placeholder='Add an item'
+            />
+        <div className='submit'>
+            <button type='submit' name='submit' value='submit'>
+                ADD
+            </button>
+        </div>
+    </form>
                     <br/>
-                    {/* <select className='priority'>
-                        <option className='priority' value='priority'>Priority</option>
-                        <option className='priority1' value='high'>High</option>
-                        <option className='priority2' value='normal'>Normal</option>
-                        <option className='priority3' value='low'>Low</option>
-                    </select> */}
-                <div className='submit'>
-                    <button 
-                        type='todoInput' 
-                        name='submit'
-                        value='submit'>
-                            Add
-                    </button>
-                    </div>
-            </form>
+            <select className='priority'>
+                <option className='priority' value='priority'>Priority</option>
+                <option className='priority1' value='high'>High</option>
+                <option className='priority2' value='normal'>Normal</option>
+                <option className='priority3' value='low'>Low</option>
+            </select>
         </div>
     </div>
 

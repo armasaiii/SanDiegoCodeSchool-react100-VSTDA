@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
-import ToDos from './ToDos'
+import React from 'react'
 import ToDoList from './ToDoList'
+import List from './List'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
-      list: [], 
-      newTask: '' 
+      list: [],  
+      newTask: ''
     }
     this.handleItemInput = this.handleItemInput.bind(this)
     this.newItemSubmitHandler = this.newItemSubmitHandler.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
-    console.log(this.state)
+  }
+
+  handleItemInput(event) {
+    this.setState({ 
+      newTask: event.target.value 
+    })
   }
   
-handleItemInput(event) {
-  this.setState({newTask: event.target.value})
-  // console.log(event)
-}
-
-newItemSubmitHandler(event) {
-  console.log(event)
-  //this.setState({newTask: event.target.value})
-  event.preventDefault();
+  newItemSubmitHandler(event) {
+    event.preventDefault()
     this.setState({
       list: [
         {
@@ -35,31 +34,32 @@ newItemSubmitHandler(event) {
     })
   }
 
-handleRemove() {
-  this.setState({newTask: event.target.value})
-}
+  handleRemove(index) {
+    this.setState((prevState) => ({
+        remove: prevState.remove.filter(item => item.index !== index),
+    }))
+};
 
-render(props) {
-  return (
-    <div>
-      <ToDoList
-      //input
-        className='textarea'
-        type='text'
-        handleItemInput={this.handleItemInput}
-        newItemSubmitHandler={this.newItemSubmitHandler}
-        value={this.state.newTask}
-      />
-      
-      <ToDos
-        data={this.state}
-      />
-
-
-
-    </div>
-  )
-}
+  render() {
+    return (
+      <div className='wrapper'>
+        <ToDoList
+          className='input'
+          type='text'
+          handleItemInput={this.handleItemInput}
+          newItemSubmitHandler={this.newItemSubmitHandler}
+          value={this.state.new}
+          placeholder='Add an item'
+        />
+        
+        <List 
+          list={this.state.list} 
+          handleRemove={this.state.remove}
+        />
+        
+      </div>
+    )
+  }
 }
 
 export default App
