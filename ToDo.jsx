@@ -3,12 +3,13 @@ import React from 'react'
 function ToDo(props) {
 
   return (
-        <li>
+        <li type='checkbox'>
             {props.item}
-            
-            <button className='action' onClick={() => props.handleRemove(props.itemindex)}>
-              Delete
-            </button>
+
+              <button className="action" name='delete' onClick={props.handleRemove}>
+                Delete
+              </button>
+             
         </li>
   )
 }

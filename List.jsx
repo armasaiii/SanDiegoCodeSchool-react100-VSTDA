@@ -2,8 +2,11 @@ import React from 'react'
 import ToDo from './ToDo'
 
   function List(props) {
+    // let display = 'welcome-section'
+    // if (props.list.map.length > 0) return display
+        
     return (
-
+      
     <div>
       <div className='welcome-section'>
           <header className='panel-body1'>

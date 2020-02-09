@@ -8,11 +8,17 @@ class App extends React.Component {
 
     this.state = {
       list: [],  
-      newTask: ''
+      newTask: '',
+      // delete:'',
+      // edit: '',
     }
     this.handleItemInput = this.handleItemInput.bind(this)
     this.newItemSubmitHandler = this.newItemSubmitHandler.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
+    this.handlePriority = this.handlePriority.bind(this)
+
+
   }
 
   handleItemInput(event) {
@@ -35,10 +41,26 @@ class App extends React.Component {
   }
 
   handleRemove(index) {
-    this.setState((prevState) => ({
-        remove: prevState.remove.filter(item => item.index !== index),
-    }))
-};
+   // console.log('nice', index)
+    event.preventDefault()
+    const newState = this.state.list.filter(item => {
+      this.state.list.indexOf(item) !== index
+    })
+
+    this.setState({ 
+      list: newState
+    })
+  }
+
+  handleEdit() {
+    this.setState = ({edit: this.state.edit})
+  }
+
+  handlePriority() {
+    this.setState = ({priority: this.state.priority})
+  }
+
+
 
   render() {
     return (
@@ -54,7 +76,7 @@ class App extends React.Component {
         
         <List 
           list={this.state.list} 
-          handleRemove={this.state.remove}
+          handleRemove={this.handleRemove}
         />
         
       </div>
