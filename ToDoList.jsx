@@ -1,44 +1,67 @@
 import React from 'react'
 
- function ToDoList(props) {
-     return (
-    <main>
-    <div>
-        <div className='header'>
-            <header>
-                <h1>Very Simple To Do App</h1>
-                    <h3>Track all of the things I have to do</h3>
-                <hr/>
-            </header>
-        </div>
-        <div className='container-input'>
-        <div className='panel-body'> I need to</div>
-        <form onSubmit={props.newItemSubmitHandler} className='todoInput'>
-            <textarea
-                className='input'
-                type='text'
-                onChange={props.handleItemInput}
-                value={props.newTask}
-                placeholder='Add an item'
-            />
-        <div className='submit'>
-            <button type='submit' name='submit' value='submit'>
-                ADD
-            </button>
-        </div>
-    </form>
-                    <br/>
-            <select className='priority'>
-                <option className='priority' value='priority'>Priority</option>
-                <option className='priority1' value='high'>High</option>
-                <option className='priority2' value='normal'>Normal</option>
-                <option className='priority3' value='low'>Low</option>
-            </select>
-        </div>
-    </div>
+class ToDoList extends React.Component {
+    render() {
+        if (this.props.isEditing) {
+        return (
+          <div className='container-todo'>
+            <div className='form-group todo'>
+              <textarea 
+                  className='update-todo-text' 
+                  name='text' 
+                  onChange={this.props.viewTodoEdit}/>
+                  <label htmlFor='Priority'>
+                      Priority
+                  </label>
+                  <select 
+                      name='update-todo-priority' 
+                      onChange={this.props.viewToDoPriority}>
+                      <option value='0'>Priority</option>
+                      <option value='1'>Low</option>
+                      <option value='2'>Medium</option>
+                      <option value='3'>High</option>
+                  </select>
+                  <div className='row'/>
+                  <button 
+                    type='button' 
+                    className='action' 
+                    onClick={this.props.handleNewSave}>
+                      Save
+                  </button>
+                <div>
+              </div>  
+            </div>
+          </div>
+        )
+    }
+      return (
+        <div className='container-todo'>
+            <div className={this.props.priority}>
+                <input 
+                    onChange={this.props.completedTask}
+                    type='checkbox' name='feature'
+                    value=''/>
 
-    </main>
-     )
- }
-
- export default ToDoList
+                <label 
+                    /* className={this.props.isComplete  ? 'strike-through':''} */>
+                    {this.props.text}
+                </label>
+        
+                <button 
+                    className='action1' 
+                    onClick={this.props.clickEdit}>
+                        Edit
+                </button>
+        
+                <button 
+                    className='action' 
+                    onClick={this.props.clickDelete}>
+                        Delete
+                </button>
+            </div>
+        </div>
+        )
+    }
+}
+  
+  export default ToDoList
